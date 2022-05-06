@@ -1,5 +1,5 @@
 // Задача 1
-/*
+
 function Num(){
 for (;;){
 var num1 = +prompt("Введите первое число", "");
@@ -95,7 +95,7 @@ function coorditates (){
 }
 console.log(coorditates());  
 
-*/
+
 //Задача 5
 
 function getSequence(start=0, step=1) {
