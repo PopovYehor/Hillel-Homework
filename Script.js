@@ -13,7 +13,6 @@ console.log(toSum())
 //Задача 2
 
 function sumStep(start, step, end){
-    
     if (start>=end){
         return 0
     }
