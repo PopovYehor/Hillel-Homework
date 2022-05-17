@@ -10,22 +10,22 @@ var user = [  {    name: 'Panda Vasya',    url: 'https://cutt.ly/Hn90ez7',
 function addToWebSite(){
     for(var i = 0; i < user.length; i++){
     var body = document.querySelector('body')
-    //Создание div
     
+    //Создание div
     var div = document.createElement('div')
     div.className = "container"
+    
     // Созание h1
-
     var h1 = document.createElement('h1')
     h1.className = "title"
     var textH1 = document.createTextNode(user[i].name)
+    
     //Создание картинки
-
     var img = document.createElement('img')
     var src = img.setAttribute("src", user[i].url)
     var alt = img.setAttribute("alt", "Панда"+"№"+[i+1])
+    
     //Создание текста под картинкой
-
     var paragrahp = document.createElement('p')
     paragrahp.className = "dedescription"
     var textParagraph = document.createTextNode(user[i].description)
