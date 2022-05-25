@@ -3,7 +3,7 @@
 }
 html, body {
 	height: 100%;
-	background-color: #4d5258;
+	background-color: #bbbbbb;
 }
 
 .container{
@@ -12,6 +12,10 @@ html, body {
 	align-items: center;
     flex-direction: column;
 }
+.title{
+    color: rgb(28, 28, 28);
+    margin-top: 20px;
+}
 .field-zone {
 	width: 350px;
 	height: 400px;
@@ -19,7 +23,7 @@ html, body {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 .field{
 	border: 2px solid #000;
@@ -27,10 +31,10 @@ html, body {
 	height: 100px;
 	cursor: pointer;
 
-	font-size: 50px;
+	font-size: 80px;
 	font-family: sans-serif;
 	font-weight: bold;
-
+    text-align: center;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -53,7 +57,7 @@ html, body {
 	font-size: 40px;
 	font-family: sans-serif;
 	font-weight: bold;
-    color: white;
+    color: rgba(255, 255, 255, 0.593);
 
 	display: flex;
 	justify-content: center;
