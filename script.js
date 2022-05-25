@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var valueTime = prompt("Введіть час дзвінку у форматі ГГ:ХХ")
 
 function strValue (){
@@ -44,3 +45,9 @@ var oclock = hours + ":" + minutes + ":" + seconds
 document.getElementById('clock').innerHTML = oclock
 }
 setInterval(time,1000)
+=======
+var yourName = prompt ("Как вас зовут?");
+if (yourName = "Евгений"){
+    console.log{true}
+}
+>>>>>>> e08118a92383c31c632c3e7651c996128c8242ed
