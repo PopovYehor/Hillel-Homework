@@ -3,10 +3,14 @@ var body = document.querySelector('body')
 var conteiner = document.createElement('div')
 conteiner.className = 'container'
 body.append(conteiner)
+var title = document.createElement('h1')
+title.className = 'title'
+title.textContent = 'Крестики VS Нолики'
+conteiner.append(title)
 var fieldZone = document.createElement('div')
 fieldZone.className = 'field-zone'
 conteiner.append(fieldZone)
-function createBtn(text){
+function createGameZone(text){
     var button = document.createElement('button');
     button.className = 'field'
     button.setAttribute('data-id', text)
@@ -14,7 +18,7 @@ fieldZone.append(button)
 }
 var col = 0
 for (var i = 0; i<9; i++) {
-        createBtn([i])
+        createGameZone([i])
         col++;
 }
 
