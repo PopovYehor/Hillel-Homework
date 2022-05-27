@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 300px;
+    height: 120px;
+
+}
+.tank{
+    width: 300px;
+    height: 120px;
+    position: absolute;
+
+}
+.bullet{
+    display: none;
+    width: 24px;
+    height: 12px;
+    position: absolute;
+
+}
+.bang{
+    display: none;
+    width: 48px;
+    height: 59px;
+    position: absolute;
+
+}
