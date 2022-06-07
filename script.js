@@ -1,53 +1,22 @@
-<<<<<<< HEAD
-var valueTime = prompt("Введіть час дзвінку у форматі ГГ:ХХ")
 
-function strValue (){
-var arrValue = []
-arrValue.push(valueTime)
-var joinValue = arrValue.join()
-var replaceValue = joinValue.replace(':','')  
-return replaceValue
-}
-strValue()
+//Задача 1
+var str1 = 'ahb acb aeb aeeb adcb axeb'
+var regEx1 = /a\w+b/g
+console.log(str1.match(regEx1))
 
-function strTime (){
-    var arrHours = []
-    var arrMinutes = []
-    var date = new Date()
-    var hours = date.getHours()
-    var minutes = date.getMinutes()
-    hours < 10 ? hours = "0" + hours : hours
-    minutes < 10 ? minutes = "0" + minutes : minutes
-    arrHours.push(hours)
-    arrMinutes.push(minutes)
-    var joinHours = arrHours.join()
-    var joinMinutes = arrMinutes.join()
-    return joinHours+joinMinutes
-    
-}
-setInterval(strTime, 1000)
+//Задача 2
+var str2 = '*+ *q+ *qq+ *qqq+ *qqq qqq+'
+var regEx2 = /\*q{1,3}\+/g
+console.log(str2.match(regEx2))
 
-var getCall = setInterval( function(){
-if (strValue()==strTime()){
-    clearInterval(getCall)
-    return alert ("Дзвінок")
-}
-}, 1000)
+//Задача 3
 
-function time (){
-var date = new Date()
-var hours = date.getHours()
-var minutes = date.getMinutes()
-var seconds = date.getSeconds()
-seconds < 10 ? seconds = "0" + seconds : seconds
-minutes < 10 ? minutes = "0" + minutes : minutes
-var oclock = hours + ":" + minutes + ":" + seconds
-document.getElementById('clock').innerHTML = oclock
-}
-setInterval(time,1000)
-=======
-var yourName = prompt ("Как вас зовут?");
-if (yourName = "Евгений"){
-    console.log{true}
-}
->>>>>>> e08118a92383c31c632c3e7651c996128c8242ed
+var str3 = '2012/12/30 23:59'
+var regEx3 = /^((1[0-9]{3})|(20[0-1][0-2])|(200[0-9]))\/((0[0-9])|[1][0-2])\/(([0-2][0-9])|(30))\s(([0-1][0-9])|([2][0-3]))\:([0-5][0-9]$)/
+
+console.log(regExYears.test(str3))
+//Задача 4.
+
+var str4 = 'Extra   spaces\nSentence.   Sentence.'
+var str5 = str4.replace(/\s+/g, " ").replace(/(\.)(\s+)/g, "$1  ")
+console.log(str5)
