@@ -1,30 +1,29 @@
 const slides = ['https://picsum.photos/500/500', 'https://picsum.photos/600/600', 'https://picsum.photos/700/700']
 
+function createElement(elem, clas, elem2, src){
+    elem.className = clas
+    elem2.append(elem)
+    elem.src = src
+}
 
 function slider(){
 //Контейнер
 const container = document.createElement('div')
-container.className = 'container'
-document.body.append(container)    
+createElement(container, 'container', document.body)    
 //Содержимое
 const div_slider = document.createElement('div')
-div_slider.className = 'slider'
-container.append(div_slider)
+createElement(div_slider, 'slider', container)
 //_____________________________
 //Кнопка влево
 const button_left = document.createElement('button')
-button_left.className = 'btn left'
-div_slider.append(button_left)
+createElement(button_left, 'btn left', div_slider)
 
 const button_left_img = document.createElement('img')
-button_left_img.src = 'slide-left.png'
-button_left_img.className = 'btn-img'
-button_left.append(button_left_img)
+createElement(button_left_img, 'btn-img left', button_left, 'slide-left.png')
 //_____________________________
 //контейнер под слайды
 const slider_wrap = document.createElement('div')
-slider_wrap.className = 'slider-wrap'
-div_slider.append(slider_wrap)
+createElement(slider_wrap, 'slider-wrap', div_slider)
 
 const ul_slide = document.createElement('ul')
 slider_wrap.append(ul_slide)
@@ -35,39 +34,29 @@ for(let i = 0; i<slides.length; i++){
     ul_slide.append(li_slide)
 
     const img_slide = document.createElement('img')
-    img_slide.className = 'slide-img'
-    img_slide.src = slides[i]
-    li_slide.append(img_slide)
+    createElement(img_slide, 'slide-img', li_slide, slides[i])
 }
 
 //__________________________
 
 //Кнопка вправо
 const button_right = document.createElement('button')
-button_right.className = 'btn right'
-div_slider.append(button_right)
+createElement(button_right, 'btn right', div_slider)
 
 const button_right_img = document.createElement('img')
-button_right_img.src = 'slide-right.png'
-button_right_img.className = 'btn-img'
-button_right.append(button_right_img)
+createElement(button_right_img, 'btn-img right', button_right, 'slide-right.png')
 //_________________________
 //Поинт
 const point_container = document.createElement('div')
-point_container.className = 'point-wrap'
-container.append(point_container)
-
+createElement(point_container, 'point-wrap', container)
 
 for (let j=0; j<slides.length; j++){
 const point = document.createElement('div')
-point_container.append(point);
-point.className = 'point'
+createElement(point, 'point', point_container)
 }
 //__________________________
 }
 slider()
-
-
 
 
 const mover = document.querySelector('.slider-wrap ul');
@@ -88,9 +77,13 @@ elem3.classList.remove('active')
 elem4.classList.add('active')
 }
 
-const onRight = () => {
+
+
+const OnMove = (e)=>{
+let target = e.target
+if (target.classList.contains('right')){
     let activeImg = mover.querySelector('.active')
-    const nextImg = activeImg.nextElementSibling
+    let nextImg = activeImg.nextElementSibling
 
     let activePoint = pointer.querySelector('.active')
     let nextPoint = activePoint.nextElementSibling
@@ -106,14 +99,9 @@ const onRight = () => {
     }
     mover.style.transform = `translateX(${-parseInt(width) * count}px)`
 }
-
-const btn_right = document.querySelector('.right');
-btn_right.addEventListener('click', onRight)
-
-
-const onLeft = () => {
+if (target.classList.contains('left')){
     let activeImg = mover.querySelector('.active')
-    const previousImg = activeImg.previousElementSibling
+    let previousImg = activeImg.previousElementSibling
 
     let activePoint = pointer.querySelector('.active')
     let previousPoint = activePoint.previousElementSibling
@@ -131,9 +119,8 @@ const onLeft = () => {
         addAndRemove_active(activeImg, li[count], activePoint, points[count])
         mover.style.transform = `translateX(${-parseInt(width)}px)`
     }
-    
-} 
+}
+}
 
-const btn_left = document.querySelector('.left');
-btn_left.addEventListener('click', onLeft)
-
+const btn = document.querySelectorAll('.btn')
+btn.forEach(elem => elem.addEventListener('click', OnMove))
