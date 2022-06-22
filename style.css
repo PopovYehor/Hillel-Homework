@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(230, 237, 241);
+}
+/*Меню*/
+.menu{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 10%;
+    height: 85%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 5px solid black;
+    background-color: rgb(225, 244, 244);
+}
+/*Кнопка игры*/
+.play{
+    width: 70%;
+    height: 8%;
+    background-color: rgba(0, 255, 255, 0.512);
+    border: 2px solid black;
+    font-size: 25px;
+    margin-top: 10px;
+}
+.play:hover{
+    background-color: aqua;
+    font-size: 30px;
+}
+/*Время*/
+.time-zone{
+    width: 70%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+    border: 2px solid black;
+}
+.time{
+    font-size: 200%;
+}
+
+/*Счетчик*/
+.counter-zone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    height: 10%;
+    margin-top: 10px;
+    border: 2px solid black;
+}
+.count{
+    font-size: 200%;
+}
+/*Уровень*/
+.lvl-zone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    height: 10%;
+    margin-top: 10px;
+    border: 2px solid black;
+}
+.lvl{
+    font-size: 200%;
+}
+/*Жизни*/
+.heart-zone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    height: 35%;
+    border: 2px solid black;
+    margin-top: 10px;
+}
+.heart-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.heart-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    list-style-type: none;
+}
+.heart{
+    width: 80%;
+    height: 90%;
+}
+
+/*Поле*/
+.field{
+    width: 85%;
+    height: 85%;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 5px solid black;
+    background-color: rgb(225, 244, 244);
+}
+/*Мяч*/
+.ball{
+    position: fixed;
+    border-radius: 50%;
+}
+/*Счет*/
+.score-zone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    height: 10%;
+    margin-top: 10px;
+    border: 2px solid black;
+}
+.score{
+    font-size: 200%;
+}
