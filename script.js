@@ -1,59 +1,61 @@
 /*Игровая зона */
-const create = function(elem, clas, elem2, text, src){
+const create = function(elem, clas, elem2, text, src, value){
     elem.className = clas
     elem2.append(elem)
     elem.textContent = text
     elem.src = src
+    elem.value = value
 }
 const items = {
     count: ['1','2','3'],
-    name: ['rock', 'scissor', 'paper'],
-    img: ['img/rock.png', 'img/scissor.png', 'img/paper.png']
+    name: ['камень', 'ножницы', 'бумага'],
+    img: ['img/rock.png', 'img/scissor.png', 'img/paper.png'],
+    score: 'Счет: ',
+    draw: 'Ничья',
+    win: 'Победитель: '
 }
 
 const players = {
     count: ['', ''],
-    name: ['Player-1', 'Player-2'],
+    name: ['Игрок-1', 'Игрок-2'],
     score: [0, 0],
     img: ['', '']
 }
 
 const render = function (){
 const titleGame = document.createElement('span')
-create(titleGame, 'title-game', document.body, 'Rock-Paper-Scissors')
+create(titleGame, 'title-game', document.body, 'Камень-Ножницы-Бумага')
 
 const container = document.createElement('div')
 create(container, 'container', document.body)
 
 const winTitle = document.createElement('span')
-create(winTitle, 'winner', container, 'Winner: ?')
+create(winTitle, 'winner', container, items.win + '?')
 
 const wraper = document.createElement('div')
 create(wraper, 'wraper', container)
 
-const firstPlayer = document.createElement('div')
-create(firstPlayer, 'player', wraper)
+for(let j = 0; j<players.name.length; j++){
+    const player = document.createElement('div')
+    create(player, 'player', wraper)
 
-const firstPlayerTitle = document.createElement('span')
-create(firstPlayerTitle, 'first-player-title', firstPlayer, players.name[0])
+    const playerTitle = document.createElement('span')
+    create(playerTitle, 'player-title', player, players.name[j])
 
-const firstPlayerScore = document.createElement('span')
-create(firstPlayerScore, 'first-player-score score', firstPlayer, 'Score: '+players.score[0])
+    const playerScore = document.createElement('span')
+    create(playerScore, 'player-score score', player, items.score+players.score[j])
 
-const firstPlayerImg = document.createElement('img')
-create(firstPlayerImg, 'first-player-img', firstPlayer, '', 'img/undefied.png')
+    const playerImg = document.createElement('img')
+    create(playerImg, 'player-img', player, '', 'img/undefied.png')
+}
 
-const secondPlayer = document.createElement('div')
-create(secondPlayer, 'player', wraper)
-
-const secondPlayerTitle = document.createElement('span')
-create(secondPlayerTitle, 'second-player-title', secondPlayer, players.name[1])
-
-const secondPlayerScore = document.createElement('span')
-create(secondPlayerScore, 'second-player-score score', secondPlayer, 'Score: '+players.score[1])
-
-const secondPlayerImg = document.createElement('img')
-create(secondPlayerImg, 'second-player-img', secondPlayer, '', 'img/undefied.png')
+const firstplayer = document.querySelectorAll('.player')
+const selectItem = document.createElement('select')
+create(selectItem, 'select-item', firstplayer[0])
+for (let i = 0; i<items.name.length; i++){
+    const optionsItem = document.createElement('option')
+    create(optionsItem, 'option-item', selectItem, items.name[i], '', [i])
+}
 
 const buttonPlay = document.createElement('button')
 create(buttonPlay, 'btn', container, 'Play')
@@ -65,8 +67,8 @@ render()
 
 
 const scoreWin = function( scoreItem, score, titleWinner, winnerText){
-    scoreItem.textContent = 'Score: '+score
-    titleWinner.textContent = 'Winner: '+winnerText
+    scoreItem.textContent = items.score+score
+    titleWinner.textContent = items.win+winnerText
 }
 
 //Определение победителя
@@ -92,25 +94,33 @@ function winner (){
             break
         } 
         else if (player1Win[i] && player2Win[i]){
-            titleWin.textContent = 'Draw'
+            titleWin.textContent = items.draw
             break
         }
     }
 }
 
 const random = (min, max)=>Math.round(Math.random() * (max-min)+min)
+
+const selects = document.querySelector('select')
+
+
+
+
 //Присвоение картинки
 const playerRand = ()=>{
-
-    for(let i =0; i<players.count.length; i++){
-    players.count[i] = random(1,3)
-        for (let n = 0; n < items.img.length; n++){
-            if( players.count[i] == items.count[n]){
-                players.img[i] = items.img[n]
-            }
     let ImgItems = document.querySelectorAll('img')
-    ImgItems[i].src = players.img[i]
-    }}
+    let selects = document.querySelector('select').selectedIndex
+
+    players.count[0] = selects+1
+    players.img[0] = items.img[selects]
+    ImgItems[0].src = players.img[0]
+
+    players.count[1] = random(1,3)
+        for (let n = 0; n < items.img.length; n++){
+            if( players.count[1] == items.count[n]) players.img[1] = items.img[n]
+        }
+        ImgItems[1].src = players.img[1]
 
     winner()
 }
