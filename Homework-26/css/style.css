@@ -1,0 +1,65 @@
+*, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.login, .add-do{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 0 10px 50px;
+}
+
+.btn-add, .btn-login{
+    width: 50px;
+    height: 20px;
+    margin-left: 20px;
+}
+.input-item{
+    width: 200px;
+    height: 20px; 
+}
+.to-do-list-container{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid black;
+}
+.do-list{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 50px 0 0;
+}
+.list-title{
+    margin: 10px 0 0 50px;
+}
+.list{
+    margin: 10px 0 10px 40px;
+}
+.list-item{
+    padding: 10px 0 10px 0;
+    font: 1em sans-serif;
+}
+.check{
+    margin: 0 5px 0 5px;
+}
+.done{
+    text-decoration: line-through;
+}
