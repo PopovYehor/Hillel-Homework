@@ -3,63 +3,127 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background-color: rgb(163 142 91 / 63%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Georgia, serif;
+}
 .container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    width: 60%;
+    height: 80%;
+    background-color: #ffe4c4d1;
+    margin-top: 50px;
+    border-radius: 40px;
+}
+.title-container{
     width: 100%;
-    height: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 0 10px 100px;
+}
+.title{
+font-size: 200%;
+}
+.pencil{
+    width: 50px;
+    height: 80%;
+    padding-left: 10px;
 }
 .login, .add-do{
     width: 100%;
-    height: 40%;
+    height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin: 10px 0 10px 50px;
+    padding-left: 50px;
 }
-
-.btn-add, .btn-login{
-    width: 50px;
-    height: 20px;
-    margin-left: 20px;
+.btn{
+    width: 80px;
+    height: 40px;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    background-color: rgb(249, 235, 217);
+    margin-left: 10px;
+    font-family: Georgia, serif;
+}
+.btn:active{
+    transition: 0.2s;
+    background-color: rgb(163 142 91 / 63%);
+}
+.btn-login{
+    font-size: 120%;
+}
+.btn-login:hover{
+    font-size: 130%;
+}
+.btn-add{
+    font-size: 200%;
+}
+.btn-add:hover{
+    font-size: 220%;
 }
 .input-item{
-    width: 200px;
-    height: 20px; 
+    width: 300px;
+    height: 40px; 
+    font-size: 100%;
+    padding-left: 10px;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    background-color: antiquewhite;
+    outline: none;
 }
+
+.add-do-area{
+    width: 80%;
+}
+
 .to-do-list-container{
-    width: 100%;
+    width: 90%;
     height: 60%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     justify-content: flex-start;
     align-items: flex-start;
-    border: 1px solid black;
+    padding: 20px 0;
 }
 .do-list{
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 0 50px 0 0;
+    background-color: #ffe4c4a8;
+    margin: 10px;
+    border-radius: 25px;
 }
 .list-title{
-    margin: 10px 0 0 50px;
+    margin: 0 auto 10px auto;
 }
 .list{
-    margin: 10px 0 10px 40px;
+    margin: 10px 0 10px 10px;
 }
 .list-item{
     padding: 10px 0 10px 0;
-    font: 1em sans-serif;
+    font-size: 150%;
+    word-break: break-word;
+    margin-left: 40px;
 }
 .check{
-    margin: 0 5px 0 5px;
+    margin: 10px 5px 5px 5px;
+    width: 35px;
+    height: 16px;
 }
+
 .done{
     text-decoration: line-through;
 }
