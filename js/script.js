@@ -106,7 +106,7 @@ const renderTask = ()=>{
         //текст
         let task = userTask[j]
         let listItem = document.createElement('li')
-        create(listItem, 'list-item', task, list, 'id', `${j}`)
+        create(listItem, 'list-item', task, list)
         //чекбокс
         let checkBox = document.createElement('input')
         addAttribute(checkBox, 'type', "checkbox")
