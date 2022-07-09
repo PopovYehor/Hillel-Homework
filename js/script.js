@@ -86,7 +86,7 @@ const createFavorites = (tag, clas, text, element2, pokemonName, id) =>{
 //--------------рендер информации о покемоне--------------//
 
 //Функция эволюции
-const evolution = (api, plusID, pokemonName)=>{
+const evolution = (api, id, pokemonName, text)=>{
     const evoBtn = document.querySelector('.pokemon-evo-btn')
 fetch(api)
     .then(res => res.json())
@@ -94,9 +94,9 @@ fetch(api)
             let {pokemon_species} = res
             for (let i = 0; i<pokemon_species.length; i++){
                 //Если  для покомена есть
-                if (`${API}pokemon-species/${plusID}/` == pokemon_species[i].url){
+                if (`${API}pokemon-species/${id}/` == pokemon_species[i].url){
                     deleteElement(evoBtn)
-                    create('button', 'pokemon-evo-btn', `Evolution for ${pokemonName}`,  selectPokemon, '', `${APIpokemon}${plusID}`)
+                    create('button', 'pokemon-evo-btn', `${text} for ${pokemonName}`,  selectPokemon, '', `${APIpokemon}${id}`)
                     break
                 }
             }
@@ -127,6 +127,7 @@ const create = (tag, clas, text, element2, src, api, id)=>{
                     let pokemonID = res.id
                     let {front_default} = res.sprites    
                     let plusID = pokemonID+1
+                    let minusID = pokemonID-1
                     
                     let pokemonTitleItem =  document.querySelector('.pokemon-title')
                     let pokemonImg = document.querySelector('.pokemon-img')
@@ -142,8 +143,8 @@ const create = (tag, clas, text, element2, src, api, id)=>{
                     let trigerCount = 10
                     for (let i = 1; i<trigerCount; i++){
                         //Если эволюция есть
-                    if (evolution(`${APIpokemonEvoTrigger}${i}`, plusID, pokemonName)){
-                        evolution(`${APIpokemonEvoTrigger}${i}`, plusID, pokemonName)
+                    if (evolution(`${APIpokemonEvoTrigger}${i}`, plusID, pokemonName, 'Evolution')){
+                        evolution(`${APIpokemonEvoTrigger}${i}`, plusID, pokemonName, 'Evolution')
                         break
                     }else{//Если эволюции нет
                         deleteElement(evoBtn)
@@ -198,12 +199,12 @@ fetch(`${API}pokemon${customLink}`)
     deleteElement(pokemonListTitle)
     create('h2', 'pokemon-list-title', "Pokemon names", pokemonListContainer)
     pokemonItemData.forEach( (elem) =>{
-        create('button', 'pokemon-item', elem.name, pokemonList, '', elem.url, elem.name)
+       create('button', 'pokemon-item', elem.name, pokemonList, '', elem.url, elem.name)
     })
 })
 }
 
-create('div', 'pagination-wrap', '', pokemonListContainer)
+create('div', 'pagination-wrap', '', pokemonList)
 let paginationWrap = document.querySelector('.pagination-wrap')
 createP('button', 'prev btn-pag', 'prev', paginationWrap)
 createP('p', 'page', `${paginationPokemon.page +1}`, paginationWrap)
@@ -326,7 +327,6 @@ fetch(APItype)
     .then(res => res.json())
         .then(res => {
             let {results} = res
-            console.log(res)
             let typeList = document.querySelector('.type-list-wrap')
             results.forEach(elem => createType('button', 'search-item', elem.name, typeList, elem.url))
 })
