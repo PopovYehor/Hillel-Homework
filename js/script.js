@@ -204,7 +204,7 @@ fetch(`${API}pokemon${customLink}`)
 })
 }
 
-create('div', 'pagination-wrap', '', pokemonList)
+create('div', 'pagination-wrap', '', pokemonListContainer)
 let paginationWrap = document.querySelector('.pagination-wrap')
 createP('button', 'prev btn-pag', 'prev', paginationWrap)
 createP('p', 'page', `${paginationPokemon.page +1}`, paginationWrap)
