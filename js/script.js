@@ -198,7 +198,7 @@ fetch(`${API}pokemon${customLink}`)
     deleteElement(pokemonListTitle)
     create('h2', 'pokemon-list-title', "Pokemon names", pokemonListContainer)
     pokemonItemData.forEach( (elem) =>{
-       create('button', 'pokemon-item', elem.name, pokemonList, '', elem.url, elem.name)
+       create('button', 'pokemon-item pokemon-item-list', elem.name, pokemonList, '', elem.url, elem.name)
     })
 })
 }
@@ -245,10 +245,12 @@ const createRegions = (tag, clas, text, element2, api)=>{
             .then(res => res.json())
                 .then(res =>{
                     let {pokemon_encounters} = res
-                    let pokemonItems = document.querySelectorAll('.pokemon-item')
-                    
+                    let pokemonItems = document.querySelectorAll('.pokemon-reg')
+                    let pokemonItemList = document.querySelectorAll('.pokemon-item-list')
+
+                    if (pokemonItemList)pokemonItemList.forEach(elem => elem.remove()) 
                     if (pokemonItems)pokemonItems.forEach(elem => elem.remove())
-                    pokemon_encounters.forEach((elem) => create('button', 'pokemon-item', elem.pokemon.name, pokemonList, '', elem.pokemon.url, elem.pokemon.name))
+                    pokemon_encounters.forEach((elem) => create('button', 'pokemon-item pokemon-reg', elem.pokemon.name, pokemonList, '', elem.pokemon.url, elem.pokemon.name))
                 })
 })
 }
@@ -314,10 +316,11 @@ const createType= (tag, clas, text, element2, api)=>{
             .then(res => res.json())
                 .then(res =>{
                     let {pokemon} = res
-                    let pokemonItems = document.querySelectorAll('.pokemon-item')
-
+                    let pokemonItems = document.querySelectorAll('.pokemon-type')
+                    let pokemonItemList = document.querySelectorAll('.pokemon-item-list')
+                    if (pokemonItemList)pokemonItemList.forEach(elem => elem.remove())
                     if (pokemonItems)pokemonItems.forEach(elem => elem.remove())
-                    pokemon.forEach((elem) => create('button', 'pokemon-item', elem.pokemon.name, pokemonList, '', elem.pokemon.url, elem.pokemon.name))
+                    pokemon.forEach((elem) => create('button', 'pokemon-item pokemon-type', elem.pokemon.name, pokemonList, '', elem.pokemon.url, elem.pokemon.name))
                 })
 })
 }

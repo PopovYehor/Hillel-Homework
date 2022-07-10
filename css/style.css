@@ -53,6 +53,7 @@ button{
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 5px;
+    padding: 0 10px;
 }
 .next, .prev{
     width: 55px;
