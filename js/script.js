@@ -127,7 +127,6 @@ const create = (tag, clas, text, element2, src, api, id)=>{
                     let pokemonID = res.id
                     let {front_default} = res.sprites    
                     let plusID = pokemonID+1
-                    let minusID = pokemonID-1
                     
                     let pokemonTitleItem =  document.querySelector('.pokemon-title')
                     let pokemonImg = document.querySelector('.pokemon-img')
@@ -235,7 +234,7 @@ apiRequest()
 
 //-----------------Получение регионов--------------//
 //Кнопка региона
-const createRegions = (tag, clas, text, element2, src, api, id)=>{
+const createRegions = (tag, clas, text, element2, api)=>{
     let element = document.createElement(tag)
     element.className = clas
     element.textContent = text
@@ -261,7 +260,7 @@ fetch(`${APIlocations}${customLink}`)
         .then(res =>{
             let {results} = res
             let locationsList = document.querySelector('.region-list-wrap')
-            results.forEach(elem => createRegions('button', 'search-item', elem.name, locationsList, '', elem.url))
+            results.forEach(elem => createRegions('button', 'search-item', elem.name, locationsList, elem.url))
 })
 }
 //Переключение регионов пагинацией
