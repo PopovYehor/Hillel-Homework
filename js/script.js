@@ -22,6 +22,7 @@ createP('h2', 'title', 'Types', typeList)
 
 createP('div', "pokemon-list-wrap", '', container)
 const pokemonList = document.querySelector('.pokemon-list-wrap')
+createP('h2', 'pokemon-list-title', "Pokemon names", pokemonList)
 createP('div', 'pokemon-list', '', pokemonList)
 
 createP('div', 'pokemon-info-wrap', '', container)
@@ -77,7 +78,6 @@ const createFavorites = (tag, clas, text, element2, pokemonName, id) =>{
         sessionStorage.getItem('pokemonId')
         //Добавление элемента в лист избранных
         let favoritesList = document.querySelector('.pokemon-list-favorites')
-
         create('button', 'pokemon-item favorites', pokemonName, favoritesList, '', `${API}pokemon/${id}`)
     })
 }
@@ -87,7 +87,7 @@ const createFavorites = (tag, clas, text, element2, pokemonName, id) =>{
 
 //Функция эволюции
 const evolution = (api, id, pokemonName, text)=>{
-    const evoBtn = document.querySelector('.pokemon-evo-btn')
+
 fetch(api)
     .then(res => res.json())
         .then(res => {
@@ -95,7 +95,6 @@ fetch(api)
             for (let i = 0; i<pokemon_species.length; i++){
                 //Если  для покомена есть
                 if (`${API}pokemon-species/${id}/` == pokemon_species[i].url){
-                    deleteElement(evoBtn)
                     create('button', 'pokemon-evo-btn', `${text} for ${pokemonName}`,  selectPokemon, '', `${APIpokemon}${id}`)
                     break
                 }
@@ -103,7 +102,8 @@ fetch(api)
         })
 }
 
-//Функция рендера
+//Функция рендера информации о покемоне
+
 const create = (tag, clas, text, element2, src, api, id)=>{
     let element = document.createElement(tag)
     element.className = clas
@@ -127,16 +127,10 @@ const create = (tag, clas, text, element2, src, api, id)=>{
                     let pokemonID = res.id
                     let {front_default} = res.sprites    
                     let plusID = pokemonID+1
-                    
-                    let pokemonTitleItem =  document.querySelector('.pokemon-title')
-                    let pokemonImg = document.querySelector('.pokemon-img')
 
                     pokemonTitle.innerHTML = ''
                     create('h2', 'pokemon-title', `Your Pokemon is ${pokemonName}`, pokemonTitle)
-                   
-                    deleteElement(pokemonImg)
                     create('img', 'pokemon-img', null, pokemonTitle, front_default)
-
                     //Создание кнопки эволюции
                     const evoBtn = document.querySelector('.pokemon-evo-btn')
                     let trigerCount = 10
@@ -163,7 +157,6 @@ const create = (tag, clas, text, element2, src, api, id)=>{
 
 }
 
-
 //рендер избраных покемонов при загрузке страницы
 const createFavoritesListInit = ()=>{
     let storePokemons = JSON.parse(sessionStorage.getItem('pokemon'))
@@ -173,7 +166,8 @@ const createFavoritesListInit = ()=>{
     }
 }
 if (sessionStorage.getItem('pokemon')) createFavoritesListInit()
-//-------------------Список покемонов------------//
+
+//-------------------------------------Список покемонов--------------------------//
 
 const pokemonList = document.querySelector('.pokemon-list')
 let pokemonListContainer = document.querySelector('.pokemon-list-wrap')
@@ -198,6 +192,8 @@ fetch(`${API}pokemon${customLink}`)
     pokemonItemData.forEach( (elem) =>{create('button', 'pokemon-item pokemon-item-list', elem.name, pokemonList, '', elem.url, elem.name)})
 })
 }
+//Функция пагинации
+const pagination = function(elem, count, pageses, equal , plus){
     
     if (count == 1){ obj = paginationPokemon}
     if (count == 2){ obj = paginationRegions}
