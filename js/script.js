@@ -131,7 +131,7 @@ const create = (tag, clas, text, element2, src, api, id)=>{
                     let pokemonTitleItem =  document.querySelector('.pokemon-title')
                     let pokemonImg = document.querySelector('.pokemon-img')
 
-                    deleteElement(pokemonTitleItem)
+                    pokemonTitle.innerHTML = ''
                     create('h2', 'pokemon-title', `Your Pokemon is ${pokemonName}`, pokemonTitle)
                    
                     deleteElement(pokemonImg)
@@ -184,7 +184,7 @@ const paginationPokemon = {
     page: 0
 }
 
-//Вывод всех покемонов
+//Вывод общего списка покемонов
 const apiRequest = ()=>{
 
 let customLink = `?limit=${paginationPokemon.limit}&offset=${paginationPokemon.offset * paginationPokemon.page}`
@@ -194,45 +194,72 @@ fetch(`${API}pokemon${customLink}`)
 .then(res =>{
     let {results} = res
     let pokemonItemData = results
-    let pokemonListTitle = document.querySelector('.pokemon-list-title')
-    deleteElement(pokemonListTitle)
-    create('h2', 'pokemon-list-title', "Pokemon names", pokemonListContainer)
-    pokemonItemData.forEach( (elem) =>{
-       create('button', 'pokemon-item pokemon-item-list', elem.name, pokemonList, '', elem.url, elem.name)
-    })
+
+    pokemonItemData.forEach( (elem) =>{create('button', 'pokemon-item pokemon-item-list', elem.name, pokemonList, '', elem.url, elem.name)})
 })
 }
+    
+    if (count == 1){ obj = paginationPokemon}
+    if (count == 2){ obj = paginationRegions}
+    if (count == 3){ obj = pokemonTypeArr}
 
-create('div', 'pagination-wrap', '', pokemonListContainer)
-let paginationWrap = document.querySelector('.pagination-wrap')
-createP('button', 'prev btn-pag', 'prev', paginationWrap)
-createP('p', 'page', `${paginationPokemon.page +1}`, paginationWrap)
-createP('button', 'next btn-pag', "next", paginationWrap)
-
+    if (elem.classList.contains('next')){
+        obj.page = obj.page + 1
+        pageses.textContent = obj.page + plus
+        obj.offset = obj.offset + obj.limit
+    }
+    if (elem.classList.contains('prev')){
+        if(obj.page > equal){
+            obj.page = obj.page - 1
+            pageses.textContent = obj.page + plus
+            obj.offset = obj.offset - obj.limit
+            }else{
+                obj.page = equal
+            }
+    }
+}
+//Прокрутка покемонов пагинацией
+const createPokemonPagination = ()=>{
+let paginationWrap1 = document.querySelector('.pagination-wrap')
+if(!paginationWrap1){
+    create('div', 'pagination-wrap', '', pokemonListContainer)
+    let paginationWrap = document.querySelector('.pagination-wrap')
+    createP('button', 'prev btn-pag', 'prev', paginationWrap)
+    createP('p', 'page', `${paginationPokemon.page +1}`, paginationWrap)
+    createP('button', 'next btn-pag', "next", paginationWrap)
+}
 const btnPag = document.querySelectorAll('.btn-pag')
 btnPag.forEach(elem =>{
         elem.addEventListener('click', function(){
-            const page = document.querySelector('.page')
-        if (elem.classList.contains('next')){
-            paginationPokemon.page = paginationPokemon.page + 1
-            page.textContent = paginationPokemon.page +1
-        }
-        if (elem.classList.contains('prev')){
-            if(paginationPokemon.page > 0){
-                paginationPokemon.page = paginationPokemon.page - 1
-                page.textContent = paginationPokemon.page +1
-                }else{
-                    paginationPokemon.page = 0
-                }
-        }
-        pokemonList.innerHTML = ''
-        apiRequest()
+            let pageses = document.querySelector('.page')
+            pagination(elem, 1, pageses, 0, 1)
+            pokemonList.innerHTML = ''
+            apiRequest()
     })
 })
+}
 apiRequest()
+createPokemonPagination()
 
+//Фукция возврата к общему списку покемонов
 
-//-----------------Получение регионов--------------//
+const createAll = (clas, text, element2)=>{
+    let element = document.createElement('button')
+    element.className = clas
+    element.textContent = text
+    element2.append(element)
+    element.addEventListener('click', function(){
+        paginationPokemon.page = 0
+        let pagination = document.querySelector('.pagination-wrap')
+        let paginationType = document.querySelector('.pagination-wrap-type')
+        if (paginationType) deleteElement(paginationType);
+        if (!pagination)createPokemonPagination();
+        pokemonList.innerHTML = ''
+        apiRequest()
+})
+}
+
+//---------------------------------------------Получение регионов-------------------------------------//
 //Кнопка региона
 const createRegions = (tag, clas, text, element2, api)=>{
     let element = document.createElement(tag)
@@ -245,11 +272,9 @@ const createRegions = (tag, clas, text, element2, api)=>{
             .then(res => res.json())
                 .then(res =>{
                     let {pokemon_encounters} = res
-                    let pokemonItems = document.querySelectorAll('.pokemon-reg')
-                    let pokemonItemList = document.querySelectorAll('.pokemon-item-list')
-
-                    if (pokemonItemList)pokemonItemList.forEach(elem => elem.remove()) 
-                    if (pokemonItems)pokemonItems.forEach(elem => elem.remove())
+                    pokemonList.innerHTML = ''
+                    let paginationWrap = document.querySelector('.pagination-wrap')
+                    if (paginationWrap) deleteElement(paginationWrap)
                     pokemon_encounters.forEach((elem) => create('button', 'pokemon-item pokemon-reg', elem.pokemon.name, pokemonList, '', elem.pokemon.url, elem.pokemon.name))
                 })
 })
@@ -262,6 +287,7 @@ fetch(`${APIlocations}${customLink}`)
         .then(res =>{
             let {results} = res
             let locationsList = document.querySelector('.region-list-wrap')
+            createAll('search-item', 'all pokemons', locationsList)
             results.forEach(elem => createRegions('button', 'search-item', elem.name, locationsList, elem.url))
 })
 }
@@ -279,56 +305,85 @@ createP('button', 'prev btn-pag-reg', 'prev', regionPaginationWrap)
 createP('p', 'page-region', `${paginationPokemon.page + 1}`, regionPaginationWrap)
 createP('button', 'next btn-pag-reg', 'next', regionPaginationWrap)
 
+
 const locationListWrap = document.querySelector('.region-list-wrap')
 
 const btnPagReg = document.querySelectorAll('.btn-pag-reg')
 btnPagReg.forEach(elem =>{
     elem.addEventListener('click', function(){
         let pageRegion = document.querySelector('.page-region')
-    if (elem.classList.contains('next')){
-        paginationRegions.page = paginationRegions.page + 1
-        pageRegion.textContent = paginationRegions.page +1
-    }
-    if (elem.classList.contains('prev')){
-        if(paginationRegions.page > 0){
-            paginationRegions.page = paginationRegions.page - 1
-            pageRegion.textContent = paginationRegions.page +1
-            }else{
-                paginationRegions.page = 0
-            }
-    }
-    locationListWrap.innerHTML = ''
-    apiRequestRegion()
+        pagination(elem, 2, pageRegion, 0, 1)
+        locationListWrap.innerHTML = ''
+        apiRequestRegion()
     })
 })
 apiRequestRegion()  
 
-//-----------------Получение типов------------------//
+//-----------------------------------------Получение типов------------------------------------------//
+//масив выбраного типа покемонов
+const pokemonTypeArr = {
+    item: [],
+    offset: 20,
+    limit: 20,
+    page: 1
+}
+
+//Прокрутка типа
+const createPaginationType = ()=>{
+
+    create('div', 'pagination-wrap-type', '', pokemonListContainer)
+    let paginationWrap = document.querySelector('.pagination-wrap-type')
+    createP('button', 'prev btn-pag-type', 'prev', paginationWrap)
+    createP('p', 'page page-type', `${pokemonTypeArr.page}`, paginationWrap)
+    createP('button', 'next btn-pag-type', "next", paginationWrap)
+
+const btnPagType = document.querySelectorAll('.btn-pag-type')
+    btnPagType.forEach(elem => elem.addEventListener('click', function(){
+        let pageType = document.querySelector('.page-type')
+        pagination(elem, 3, pageType, 1, 0 )
+        pokemonList.innerHTML = ''
+        for (let i = (pokemonTypeArr.offset-pokemonTypeArr.limit); i<(pokemonTypeArr.page*pokemonTypeArr.limit); i++){
+            create('button', 'pokemon-item pokemon-type', pokemonTypeArr.item[i].pokemon.name, pokemonList, '', pokemonTypeArr.item[i].pokemon.url, pokemonTypeArr.item[i].pokemon.name)
+        }
+console.log('ojk')
+    }))
+}
+
 //Кнопка типа
 const createType= (tag, clas, text, element2, api)=>{
     let element = document.createElement(tag)
     element.className = clas
     element.textContent = text
     element2.append(element)
-
     element.addEventListener('click', ()=>{
+
         fetch(api)
             .then(res => res.json())
                 .then(res =>{
                     let {pokemon} = res
-                    let pokemonItems = document.querySelectorAll('.pokemon-type')
-                    let pokemonItemList = document.querySelectorAll('.pokemon-item-list')
-                    if (pokemonItemList)pokemonItemList.forEach(elem => elem.remove())
-                    if (pokemonItems)pokemonItems.forEach(elem => elem.remove())
-                    pokemon.forEach((elem) => create('button', 'pokemon-item pokemon-type', elem.pokemon.name, pokemonList, '', elem.pokemon.url, elem.pokemon.name))
+                    pokemonTypeArr.item = pokemon
+                    pokemonTypeArr.page = 1
+                    pokemonTypeArr.offset = 20
+                    pokemonList.innerHTML = ''
+                    let paginationWrap = document.querySelector('.pagination-wrap')
+                    if (paginationWrap) deleteElement(paginationWrap)
+                    for (let i = (pokemonTypeArr.offset-pokemonTypeArr.limit); i<(pokemonTypeArr.page*pokemonTypeArr.limit); i++){
+                        create('button', 'pokemon-item pokemon-type', pokemonTypeArr.item[i].pokemon.name, pokemonList, '', pokemonTypeArr.item[i].pokemon.url, pokemonTypeArr.item[i].pokemon.name)
+                    }
+                    let paginationType = document.querySelector('.pagination-wrap-type')
+                    if(paginationType) deleteElement(paginationType)
+                    createPaginationType()
                 })
 })
 }
 //Список типов
+
 fetch(APItype)
-    .then(res => res.json())
-        .then(res => {
-            let {results} = res
-            let typeList = document.querySelector('.type-list-wrap')
-            results.forEach(elem => createType('button', 'search-item', elem.name, typeList, elem.url))
-})
+        .then(res => res.json())
+            .then(res => {
+                let {results} = res
+                let typeList = document.querySelector('.type-list-wrap')
+                createAll('search-item', 'all pokemons', typeList)
+                results.forEach(elem => createType('button', 'search-item', elem.name, typeList, elem.url))
+    })
+
