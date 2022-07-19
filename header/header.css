@@ -263,6 +263,7 @@ html, * {
 }
 
 /*---------------------------------------------------------------Catalog---------------------------------------------*/
+/*--------------------Selects---------------*/
 .catalog-wrap {
   width: 1980px;
   display: flex;
@@ -320,6 +321,50 @@ html, * {
   border: none;
   width: 70%;
   margin-left: 10px;
+}
+
+/*-------------items-------------------*/
+.chair-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chair-wrap .chair-items-wrap {
+  display: grid;
+  grid-template-columns: repeat(4, 330px);
+  margin-left: 95px;
+}
+.chair-wrap .chair-items-wrap .chair-items {
+  width: 330px;
+  text-align: center;
+  margin: 10px 5px 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.chair-wrap .chair-items-wrap .chair-items .chair-img {
+  width: 280px;
+  height: 300px;
+}
+.chair-wrap .chair-items-wrap .chair-items .chair-description {
+  font-size: 20px;
+  width: 280px;
+}
+.chair-wrap .chair-items-wrap .chair-items .chair-price {
+  width: 280px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.chair-wrap .chair-items-wrap .chair-items .chair-last-price {
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  left: 38px;
+}
+.chair-wrap .chair-items-wrap .chair-items .cross-price {
+  position: relative;
+  left: -68px;
 }
 
 .other {
