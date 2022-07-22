@@ -1,10 +1,8 @@
 @import "normolize.scss";
-body{
-    background-color: rgb(183, 206, 219);
 
-    #root{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+#root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
 }

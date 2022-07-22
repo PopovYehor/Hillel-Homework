@@ -1,7 +1,11 @@
 import './style/styles.scss'
 
-import './components/table/index.js'
-/* import './components/chart/index.js' */
+import {renderTable} from './components/table/index.js'
+import {renderChart} from './components/chart/index.js'
+
+renderTable()
+renderChart()
+
 
 /* document.getElementById('root').style.cssText =`display: flex;
 justify-content: center;

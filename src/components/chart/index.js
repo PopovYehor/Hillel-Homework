@@ -1,36 +1,28 @@
-
+import "./style.scss"
 import Chart from 'chart.js/auto'
+import {labels, data, config} from './chartConfig'
+import {url, token} from "../table/index.js"
+
 
 const root = document.getElementById('root')
 const charts = document.createElement('canvas')
 charts.className = 'myChart'
 root.append(charts)
 
-const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
-
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-  };
-
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
 
 
+const renderChart = ()=>{
+const API = `${url}?access_token=${token}`
+fetch(API).then(res=>res.json()).then(json =>{
+  let {user} = json
+  user.forEach(element => {
+    labels.push(element.name)
+    data.datasets[0].data.push(element.rating)
+  })
   const myChart = new Chart(charts, config);
+})
+}
+export {renderChart}
+
+  
   

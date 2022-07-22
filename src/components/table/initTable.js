@@ -1,5 +1,10 @@
+import { createElem } from "../../helper/createElement"
+
 const initTable = ()=>{
-    let table = `<div class="mdc-data-table">
+    const root = document.getElementById('root')
+    createElem('div', 'mdc-data-table', null, root)
+    const tableWrap = document.querySelector('.mdc-data-table')
+    let table = `
     <div class="mdc-data-table__table-container">
       <table class="mdc-data-table__table" aria-label="Рейтинг студентів">
         <thead>
@@ -31,9 +36,9 @@ const initTable = ()=>{
         </div>
       </div>
     </div>
-  </div>`
-  const root = document.getElementById('root')
-  root.innerHTML = table
+  `
+  
+  tableWrap.innerHTML = table
 }
 
 export {initTable}
