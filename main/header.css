@@ -5,11 +5,7 @@ html, * {
 }
 
 #root {
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
   margin: 0;
   padding: 0;
   /*-------------------------------РЕКЛАМА-----------------------------------------------*/
@@ -21,6 +17,8 @@ html, * {
   /*------------------------------------test-drive-----------------------------------------------------------*/
   /*-------------------------------------------client---------------------------------------------------*/
   /*------------------------------------review---------------------------------------*/
+  /*------------------------------------------------------question----------------------------------------------------*/
+  /*------------------------------------------footer---------------------------------------------------*/
 }
 #root #head {
   width: 1920px;
@@ -174,6 +172,14 @@ html, * {
   border: none;
   box-shadow: 0px 12px 10px rgba(68, 88, 104, 0.25);
   background-color: #FFFFFF;
+}
+#root .advertising .slide-right {
+  position: relative;
+  right: 50px;
+}
+#root .advertising .slide-left {
+  position: relative;
+  left: 50px;
 }
 #root .advertising .title-advertising {
   width: 620px;
@@ -548,15 +554,15 @@ html, * {
   height: 100px;
 }
 #root .client-wrap .client-list #client-3 {
-  width: 170px;
+  width: 200px;
   height: 40px;
 }
 #root .client-wrap .client-list #client-4 {
-  width: 180px;
-  height: 60px;
+  width: 200px;
+  height: 65px;
 }
 #root .client-wrap .client-list #client-5 {
-  width: 190px;
+  width: 205px;
   height: 50px;
 }
 #root .client-wrap .client-list #client-6 {
@@ -722,6 +728,7 @@ html, * {
   position: absolute;
   top: 4415px;
   z-index: -2;
+  width: 1920px;
 }
 #root .question-wrap .map-point {
   width: 60px;
@@ -794,9 +801,4 @@ html, * {
 }
 #root footer .footer-contact .phone {
   font-size: 20px;
-}
-#root .other {
-  height: 900px;
-  width: 1920px;
-  background-color: aquamarine;
 }/*# sourceMappingURL=header.css.map */
