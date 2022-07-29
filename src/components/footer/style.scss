@@ -1,0 +1,62 @@
+@import "/src/style/styles.scss";
+footer{
+    width: $page-width;
+    height: $item-width;
+    background-color: #191E32;
+    @include flex(row,center ,center );
+    .footer-title{
+        width: 220px;
+        .title-company{
+            .title{
+                @include flex(row,start ,start );
+                h1{
+                    color: white;
+                    font-size: 24px;
+                    margin-left: 10px;
+                }
+            }
+            h2{
+                font-size: 10px;
+                color: #959AAE;
+                margin-left: 40px;
+            }
+        }
+        .footer-title-item{
+            padding-bottom: 5px;
+            color: #959AAE;
+            font-size: 14px;
+        }
+        .politic-conf{
+            margin-top: 15px;
+        }
+        .guard-rule{
+            margin-top: 5px;
+        }
+    }
+    .footer-nav{
+        display: flex;
+        flex-direction: column;
+        a{
+            @include normal_A();
+            font-size: $h4;
+            margin: 10px 0 0 75px;
+            color: #E7EAEF;
+            line-height: 15px;
+            
+        }
+    }
+    .footer-contact{
+        @include flex(column,start ,start );
+        a{
+            @include normal_A();
+            font-family: $font-awesome;
+            font-size: $h4;
+            color: #E7EAEF;
+            margin: 15px 0 0 115px ;
+            line-height: 15px;
+        }
+        .phone{
+            font-size: 20px;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+@import "/src/style/styles.scss";
+
+.reviews-wrap{
+    @include flex(column,center ,center );
+    width: $page-width;
+    margin-top: 100px;
+    .review-tietle{
+        h1{
+        font-size: $h1;
+        color: $color-prymary;
+        }
+    }
+    .review-items{
+        @include flex(row,center ,center );
+        .slide{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0px 0px 10px rgba(0, 116, 212, 0.35);
+            background-color: $color-100;
+        }
+        .review-slide-right{
+            position: relative;
+            left: -40px;
+        }
+        .review-slide-left{
+            position: relative;
+            left: 40px;
+        }
+        
+    }
+}

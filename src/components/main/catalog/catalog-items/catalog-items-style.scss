@@ -1,0 +1,38 @@
+@import "/src/style/styles.scss";
+.chair-wrap{
+    @include flex(row,center ,center );
+    width: $page-width;
+        .chair-items-wrap{
+            display: grid;
+            grid-template-columns: repeat(4, 330px);
+            .chair-items{
+                width: 330px;
+                text-align: center;
+                margin: 10px 5px 0 5px;
+                @include flex(column,center ,center );
+                .chair-img{
+                    width: $item-width;
+                    height: 300px;
+                }
+                .chair-description{
+                    font-size: 20px;
+                    width: $item-width;
+                }
+                .chair-price{
+                    width: $item-width;
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+                .chair-last-price{
+                    font-size: 20px;
+                    font-weight: 700;
+                    position: relative;
+                    left: 38px;
+                }
+                .cross-price{
+                    position: relative;
+                    left: -68px;
+                }
+            }
+        }
+    }

@@ -1,0 +1,89 @@
+@import "/src/style/styles.scss";
+.question-wrap{
+    @include flex(column,center ,center );
+    width: $page-width;
+    margin: 150px 0 430px 0 ;
+    .question-call-background{
+        background-image: url('https://s3-alpha-sig.figma.com/img/a76b/71b7/5a5663a0ffd8ecefb060a7cf849c0dcd?Expires=1659312000&Signature=HT2sb8UXdOx4NisNTcOe3AJz5K0YRarZ0azfDwk75vFHkkNeU8OgEXyJxesCWkfMM3P1x4bMEjAjZM6UD-kSbvm-XHS3DA9MIdxg4z~3nL~JR8izOperBGxuhkglk9mnpiXI4O3k6m~nRTktxT18DwqNAACqwx-KMnqARHiAKqaW3jhHD3HSwh5tnXdGDW-NWRk50vNgtE10-dflQLajS9kTtAMwdhfgZG1uyFRmsm5OXdBIPSqak02wuCGxfWPJXf-w0JWn6n0HwjAMLa6lOj7dHWaU~drdKtUs7gxhO5OH4AK9wpDVg7JAj6fxGuvU9pE8~EKoasp1u6M~HBL8hw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA');
+        border-radius: 15px;
+        .question-call-wrap{
+            width: 1800px;
+            height: 530px;
+            
+            background-color: $color-prymary;
+            border-radius: 15px;
+            .question-call-description{
+                @include flex(row,center ,center );
+                .question-call-description-text{
+                    width: 570px;
+                    color: white;
+                    position: relative;
+                    left: -130px;
+                    top: -75px;
+                    h2{
+                        font-size: $h1;
+                        font-weight: 900;
+                    }
+                    h3{
+                        font-size: $h2;
+                        margin-top: 10px;
+                    }
+                }
+                .question-call-description-img{
+                    width: 422px;
+                    height: 530px;
+                    .hand-phone{
+                        width: 100%;
+                        height: 100%;
+                        filter: blur(5px);
+                    }
+                }
+            }
+            .contact-form{
+                @include flex(row,center ,center );
+                position: relative;
+                top: -245px;
+                .contact-name{
+                    width: 420px;
+                    font-family: $font-awesome;
+                    background-color: $color-700;
+                    padding: 30px 0 30px 50px;
+                    border-radius: 15px;
+                    border: none;
+                    margin-left: 20px;
+                    box-shadow: 0px 6px 16px rgba(255, 255, 255, 0.08);
+                }
+                .contact-name::placeholder{
+                    color: white;
+                    font-size: 18px;
+                }
+                .order-call{
+                    width: 300px;
+                    height: 75px;
+                    color: white;
+                    border-radius: 15px;
+                    border: none;
+                    background-color: #0074D4;
+                    margin-left: 20px;
+                    font-size: 18px;
+                    box-shadow: 0px 43px 50px rgba(0, 116, 212, 0.2);
+                }
+
+            }
+        }
+    }
+    .map{
+        position: absolute;
+        top: 4570px;
+        z-index: -2;
+        width: $page-width;
+    }
+        .map-point{
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 5065px;
+            z-index: -1;
+        }
+    
+}

@@ -1,0 +1,61 @@
+@import "/src/style/styles.scss";
+
+.specials-wrap{
+    width: $page-width;
+    margin-top: 50px;
+    @include flex(column,center ,center );
+    background: #f3f4f769;
+    .special-title{
+        width: 1180px;
+        margin-top: 50px;
+        @include flex(column,center ,center );
+        text-align: center;
+        .special-title-primary{
+            font-size: $h1;
+            font-weight: 900;
+            color: $color-prymary;
+        }
+        .special-title-secondary{
+            margin-top: 10px;
+            font-size: $h3;
+            font-weight: 600;
+            color: $color-700;
+        }
+    }
+    .special-desctiption-wrap{
+        @include flex(row,start ,start);
+        .specials-decription{
+            display: grid;
+            grid-template-columns: repeat(2, 400px);
+            column-gap: 295px;
+            margin-top: 90px;
+            .specials-item{
+                width: 400px;
+                text-align: left;
+                height: 100px;
+                color: #2b33506c;
+                h1{
+                    font-size: $h3;
+                }
+                h2{
+                    font-size: $b3;
+                }
+            }
+            .active{
+                color: $color-prymary
+            }
+        }
+        .box-img{
+            position: relative;
+            .special-description-img{
+                position: absolute;
+                left: 180px;
+                top: -500px;
+                width: 685px;
+                height: 560px;
+            }
+        }
+            
+    }
+
+}

@@ -1,0 +1,41 @@
+@import "/src/style/styles.scss";
+
+.catalog-lists-selects{
+    @include flex(row,center ,center );
+    width: 65%;
+    margin-top: 35px;
+    .catalog-list-selects{
+        width: $page-width;
+        @include flex(row,center ,center );
+        .select-back{
+            width: $item-width;
+            height: 60px;
+            border: #E7EAEF solid 1px;
+            border-radius: 8px;
+            .select-back-title{
+                color: #959AAE;
+                font-size: 14px;
+                position: relative;
+                top: -11px;
+                left: 25px;
+                background-color: white;
+            }
+            .select-zone{
+                @include flex(row,center ,center );
+                .select-img{
+                    margin-left: 30px;
+                }
+                select{
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: $color-prymary;
+                    border: none;
+                    width: 70%;
+                    height: 30px;
+                    margin-left: 10px;
+                }
+            }
+            
+        }
+    }
+}

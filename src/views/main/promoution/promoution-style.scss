@@ -1,0 +1,45 @@
+@import "/src/style/styles.scss";
+
+.promoution-wrap{
+    @include flex(row,center ,center );
+    background-color: $color-100;
+    width: $page-width;
+    height: 300px;
+    .promoution-delivery{
+        width: 365px;
+        margin: 0 50px 0 50px;
+        @include flex(column,center ,center );
+        .promoution-delivery-img{
+            @include flex(row,center ,center );
+            position: relative;
+            left: 30px;
+            .promoution-delivery-img-basic{
+                z-index: 1;
+            }
+            .promoution-delivery-img-background{
+            position: relative;
+            left: -30px;
+            top: 30px;
+            z-index: 0;
+            }
+        }
+        .promoution-delivery-text{
+            position: relative;
+            z-index: 1;
+            margin-top: 10px;
+            font-size: $h3;
+                p{
+                    text-align: center;
+                }
+        }
+        .promoution-delivery-text-support{
+            margin-top: 5px;
+            .promoution-link{
+                @include normal_A();
+                color: $color-600;
+                font-size: $b3;
+            }
+        }
+    }
+
+}

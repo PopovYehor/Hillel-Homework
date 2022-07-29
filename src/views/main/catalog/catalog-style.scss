@@ -1,0 +1,26 @@
+@import "/src/style/styles.scss";
+
+.catalog-wrap{
+    width: $page-width;
+    @include flex(column,center ,center );
+    background-color: white;
+
+    .catalog-title{
+        color: $color-prymary;
+        font-size: $h1;
+        font-weight: bold;
+    }
+}
+.view-all-chair{
+    width: 1170px;
+    height: 80px;
+    margin-top: 70px;
+    @include flex(row,center ,center );
+    border-radius: 10px;
+    background-color: #F3F4F7;
+    .show-all-chair{
+        @include normal_A();
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
