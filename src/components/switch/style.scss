@@ -1,0 +1,21 @@
+@import "/src/style/styles.scss";
+.switch-wrap{
+    @include flex(row, center, center);
+    margin-top: 40px;
+    width: $page-width;
+    .switch-line{
+    @include flex(row, start, center);
+    width: 1180px;
+        a{
+            font-size: $b3;
+            color: $color-700;
+            @include normal_A;
+        }
+        .active{
+            color: #959AAE;
+        }
+        svg{
+            margin: 0 10px;
+        }
+    }
+}

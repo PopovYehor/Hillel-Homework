@@ -1,0 +1,39 @@
+@import "/src/style/styles.scss";
+.description-text-wrap{
+    width: $page-width;
+    @include flex(row,center ,start );
+    margin-top: 100px;
+    margin-bottom: 65px;
+    .primary-description-text{
+        width: 530px;
+        margin-right: 50px;
+        h1{
+            font-size: 28px;
+            color: $color-prymary;
+        }
+        .description-text{
+            margin-top: 10px;
+            font-size: 16px;
+            color: $color-700;
+            font-weight: 400;
+            line-height: 30px;
+        }
+        .description-deploy{
+            font-size: 16px;
+            color: #0074D4;
+            margin-top: 10px;
+        }
+    }
+    
+    .secondary-description-text{
+        margin-left: 25px;
+        .characteristics-description-text{
+            display: grid;
+            grid-template-columns: repeat(2, 305px);
+            grid-template-rows: repeat(4, 43px);
+            .description-text:first-child{
+                margin-top: 10px;
+            }
+        }
+    }
+}

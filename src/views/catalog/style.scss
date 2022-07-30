@@ -1,0 +1,23 @@
+@import "/src/style/styles.scss";
+
+.catalog-wrap{
+    width: $page-width;
+    @include flex(column,center ,center );
+    background-color: white;
+    margin-top: 30px;
+}
+.question-wrap{
+.map-catalog{
+    position: absolute;
+    top: 1340px;
+    z-index: -2;
+    width: $page-width;
+}
+.map-point-catalog{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 1830px;
+    z-index: -1;
+}
+}

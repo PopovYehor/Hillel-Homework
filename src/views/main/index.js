@@ -8,7 +8,7 @@ import { testDrive } from "./test-drive/test-drive-index"
 import { client } from "./client/client-index"
 import { review } from "./review/review-index"
 import { question } from "./question/question-index"
-import { footer } from "../../components/footer"
+
 
 const Main = ()=>{
     const maine = document.getElementById('main')
@@ -28,8 +28,6 @@ const Main = ()=>{
     review()
     createElem('div', 'question-wrap', null, maine)
     question()
-    createElem('footer', null, null, maine)
-    footer()
 }
 
 export default Main

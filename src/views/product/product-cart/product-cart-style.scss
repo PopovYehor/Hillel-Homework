@@ -1,0 +1,6 @@
+@import "/src/style/styles.scss";
+.description-wrap{
+    width: $page-width;
+    @include flex(column,center ,center );
+    box-shadow: 0px  15px 15px -10px #E7EAEF;  
+}

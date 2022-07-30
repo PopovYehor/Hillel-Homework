@@ -1,0 +1,43 @@
+@import "/src/style/styles.scss";
+.description-photo-wrap{
+    @include flex(row,center ,center );
+    width: $page-width;
+    margin-top: 15px;
+    .description-photo{
+        @include flex(row,start ,center );
+        width: 1180px;
+        .description-photo-choise{
+            width: 90px;
+            height: 90px;
+            overflow: hidden;
+            border: 1px solid #E7EAEF;
+            border-radius: 10px;
+            #photo-1{
+                width: 55px;
+                position: relative;
+                left: 20px;
+            }
+            #photo-2{
+                width: 165px;
+                position: relative;
+                top: -105px;
+                left: -25px;
+            }
+            #photo-3{
+                width: 210px;
+                position: relative;
+                left: -110px;
+                top: -160px;
+            }
+            #photo-4{
+                width: 225px;
+                position: relative;
+                top: -265px;
+                left: -45px;
+            }
+        }
+        .description-photo-choise:not(:first-child){
+            margin: 0 10px 0 10px;
+        }
+    }
+}

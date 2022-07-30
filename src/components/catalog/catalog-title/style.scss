@@ -1,0 +1,22 @@
+@import "/src/style/styles.scss";
+.catalog-title{
+    @include flex(row,center ,start );
+    color: $color-prymary;
+    .primary-catalog-title{
+        @include flex(row,start ,center );
+        width: 715px;
+        h1{
+            font-size: 28px;
+            font-weight: bold;
+        }
+    }
+    .sort-catalog{
+        @include flex(row,end ,center );
+        width: 500px;
+        select{
+            border: none;
+            font-size: 18px;
+        }
+    }
+    
+}

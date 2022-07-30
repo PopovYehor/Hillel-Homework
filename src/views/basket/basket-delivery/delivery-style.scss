@@ -1,0 +1,88 @@
+@import "/src/style/styles.scss";
+.delivery-wrap{
+    width: 850px;
+    border: 1px solid #F3F4F7;
+    border-radius: 15px;
+    box-shadow: 0px 20px 52px rgba(0, 0, 0, 0.15);
+    margin-top: 50px;
+    .delivery-container{
+        @include flex(column,start ,start );
+        margin: 45px 50px 60px 50px;
+        h2{
+            font-size: $h2;
+            color: $color-prymary;
+            margin-bottom: 5px;
+        }
+        .delivery-item{
+            width: 750px;
+            height: 80px;
+            @include flex(row,start ,center );
+            border: 1px solid #E7EAEF;
+            border-radius: 10px;
+            margin-top: 10px;
+            .checkbox-item{
+                @include flex(row,center ,center );
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: 1px solid #CED2DA;
+                margin-left: 25px;
+                .check{
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: $color-100;
+                }
+            }
+            .checkbox-item.active{
+                background-color: #0074D4;
+            }
+            .delivery-item-text{
+                margin-left: 20px;
+                h3{
+                    font-size: 18px;
+                    color: $color-700;
+                }
+                p{
+                    font-size: 16px;
+                    color: #959AAE;
+                    margin-top: 5px;
+                }
+            }
+        }
+        .adres-delivery-title{
+            margin: 35px 0 5px 0;
+        }
+        p{
+            font-size: 16px;
+            color: #959AAE;
+        }
+        input{
+            width: 530px;
+            height: 65px;
+            background-color: #F3F4F7;
+            border: 1px solid #E7EAEF;
+            border-radius: 10px;
+            margin-top: 20px;
+            padding-left: 30px;
+            font-size: 18px;
+        }
+        input::placeholder{
+            color: #959AAE;
+        }
+        input:focus{
+           outline: none;
+        }
+        .upload-delivery-item{
+            @include flex(row,start ,center );
+            margin-top: 25px;
+            a{
+                @include normal_A();
+                font-size: 16px;
+                font-weight: 600;
+                color: #0074D4;
+                margin-left: 10px;
+            }
+        }
+    }   
+}

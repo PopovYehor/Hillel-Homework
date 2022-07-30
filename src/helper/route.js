@@ -1,6 +1,7 @@
 import Main from "../views/main"
-import prduct from "../components/product"
-
+import Product from "../views/product"
+import Catalog from "../views/catalog"
+import Basket from "../views/basket"
 const onHandleRoute = (e) => {
     e = e || e.window
     e.preventDefault()
@@ -9,8 +10,10 @@ const onHandleRoute = (e) => {
 }
 
 const routes = {
-    '/':Main,
-    '/about-product': prduct,
+    '/': Main,
+    '/about-product': Product,
+    '/basket': Basket,
+    '/catalog': Catalog,
 }
 
 const onLocation = () => {

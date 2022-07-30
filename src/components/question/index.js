@@ -1,4 +1,4 @@
-import "./question-style.scss"
+import "./style.scss"
 
 const question = ()=>{
     const elem = `
@@ -20,8 +20,6 @@ const question = ()=>{
             </div>
         </div>
     </div>
-        <img class="map-main" src="https://i.ibb.co/GxcDB3h/map.png" alt="">
-        <img class="map-point-main" src="https://cdn-icons-png.flaticon.com/512/149/149060.png" alt="">
     `
     const wrap = document.querySelector('.question-wrap')
     wrap.innerHTML = elem
