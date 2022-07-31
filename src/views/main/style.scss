@@ -1,0 +1,35 @@
+@import "/src/style/styles.scss";
+
+.catalog-wrap{
+    width: $page-width;
+    @include flex(column,center ,center );
+    background-color: white;
+    margin-top: 30px;
+    .catalog-title{
+        @include flex(row,center ,start );
+        color: $color-prymary;
+        .primary-catalog-title-main{
+            @include flex(row,center ,center );
+            width: 1180px;
+            h1{
+                font-size: 44px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+.question-wrap{
+.map-main{
+    position: absolute;
+    top: 4350px;
+    z-index: -2;
+    width: $page-width;
+}
+.map-point-main{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 4840px;
+    z-index: -1;
+}
+}

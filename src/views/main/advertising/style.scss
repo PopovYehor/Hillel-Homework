@@ -3,7 +3,7 @@
 .advertising{
     width: $page-width;
     height: 640px;
-    background: content-box url("/src/img/background-slider.png");
+    background: content-box url("https://i.ibb.co/jrXfR4H/background-slider.png");
     @include flex(row,center ,center );
 
     .slide{
